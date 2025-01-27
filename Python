@@ -1,0 +1,40 @@
+from google.colab import auth
+from googleapiclient.discovery import build
+from oauth2client.client import GoogleCredentials
+import pandas as pd
+
+# 认证
+auth.authenticate_user()
+
+# 设置API服务
+credentials = GoogleCredentials.get_application_default()
+service = build('analytics', 'v3', credentials=credentials)
+
+# 获取搜索记录
+def get_search_queries(service, account_id, property_id, profile_id, start_date, end_date):
+    return service.data().ga().get(
+        ids=f'ga:{profile_id}',
+        start_date=start_date,
+        end_date=end_date,
+        metrics='ga:searchUniques',
+        dimensions='ga:searchKeyword',
+        filters='ga:searchKeyword!=(not set)',
+        sort='-ga:searchUniques'
+    ).execute()
+
+# 替换为你的GA账户ID、属性ID和视图ID
+account_id = 'YOUR_ACCOUNT_ID'
+property_id = 'YOUR_PROPERTY_ID'
+profile_id = 'YOUR_PROFILE_ID'
+start_date = '2023-01-01'
+end_date = '2023-12-31'
+
+search_queries = get_search_queries(service, account_id, property_id, profile_id, start_date, end_date)
+
+# 处理数据
+rows = search_queries.get('rows', [])
+df = pd.DataFrame(rows, columns=['Keyword', 'Unique Searches'])
+print(df)
+
+# 保存数据
+df.to_csv('search_queries.csv', index=False)
