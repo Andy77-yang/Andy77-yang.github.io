@@ -18,11 +18,9 @@ Welcome to my GitHub profile! I'm a passionate developer and tech enthusiast who
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Andy77-yang&layout=compact&theme=radical)
 
 ## 📫 How to reach me
-- **Email:** andy77.yang@example.com
-- **LinkedIn:** [Andy Yang](https://www.linkedin.com/in/andy77-yang/)
-- **Twitter:** [@Andy77Yang](https://twitter.com/Andy77Yang)
+- **Email:** 15016793576@163.com
 
-Feel free to reach out if you have any questions or just want to connect!
+Feel free to reach out if you have any questions or want to connect!
 
 ## 🏆 Achievements
 - Contributed to several open-source projects
